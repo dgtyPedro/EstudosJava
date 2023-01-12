@@ -1,4 +1,9 @@
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book {
+    private static List<WeakReference<Book>> instances = new ArrayList<>();
     private static int bookCount = 0;
     private String title;
     private Author author = new Author();
@@ -8,8 +13,13 @@ public class Book {
 
     public Book(String title, int year){
         bookCount++;
+        instances.add(new WeakReference<Book>(this));
         this.title = title;
         this.year = year;
+    }
+
+    public static List<WeakReference<Book>> getInstances() {
+        return instances;
     }
 
     public Author getAuthor() {
