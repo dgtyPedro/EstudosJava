@@ -18,7 +18,6 @@ public class Main {
 
     public static void Menu(){
         System.out.println("1- See books");
-        System.out.println("2- See authors");
         System.out.println("0- Quit");
         int option = scanner.nextInt();
         switch (option){
@@ -27,6 +26,9 @@ public class Main {
                 break;
             case 1:
                 seeBooks();
+                break;
+            default:
+                Menu();
                 break;
         }
     }
@@ -69,6 +71,10 @@ public class Main {
                 break;
             case 3:
                 editStorage(bookI);
+                break;
+            default:
+                BookMenu(bookI);
+                break;
         }
     }
 
